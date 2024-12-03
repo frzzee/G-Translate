@@ -24,8 +24,6 @@ local user_language = "English"
 
 local utf8_char
 local math_type
---// https://vpnapi.io/api/180.246.250.196?key=2ca49e2e56714ae2b4a1c7d7d08e8e25
---// akaxel@xxmail.com
 
 if _VERSION == "Lua 5.1" or _VERSION == "Lua 5.2" then
     local math_floor = math.floor
@@ -716,7 +714,7 @@ function json.langcode()
         objectMt.show(json.decode(clientinfo.api).message);os.exit()
     end
     
-    clientinfo.name_locale = json.hook("https://raw.githubusercontent.com/frzzee/G-Translate/refs/heads/main/Language.json").content
+    clientinfo.name_locale = json.hook("https://raw.githubusercontent.com/frzzee/G-Translate/refs/heads/main/language.json").content
     
     clientinfo.langcode = json.decode(clientinfo.name_locale)
     
@@ -747,7 +745,7 @@ function json.langoptions()
         table_insert(options, language_options[len][2])
     end
     --// language_table = table_translate(language_options)
-    --// country name didnt need to translated. my bad lol
+    --// country name didnt need to translate.
     local content = objectMt.choice(options, nil, strings("support") .. " " .. #options .. " " .. strings("language"))
     if content ~= nil then
        userLang = language_options[content][1]
