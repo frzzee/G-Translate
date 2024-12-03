@@ -753,5 +753,3 @@ function json.langoptions()
     end
     return userLang
 end
-
-json.langcode()
