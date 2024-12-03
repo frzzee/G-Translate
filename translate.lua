@@ -739,6 +739,8 @@ function json.langcode()
     return clientinfo.region, user_language, userLang
 end
 
+json.langcode()
+
 function json.langoptions()
     local options = {}
     for len, lang in pairs(language_options) do
@@ -753,3 +755,5 @@ function json.langoptions()
     end
     return userLang
 end
+
+return print(strings("can you read this message with your language?"))
