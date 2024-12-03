@@ -756,4 +756,16 @@ function json.langoptions()
     return userLang
 end
 
-return print(strings("can you read this message with your language?"))
+:: preview ::
+local msg = ''
+msg = msg .. strings("hello world") .. '\n\n'
+msg = msg .. strings("can you read this message in your language?") .. '\n\n'
+msg = msg .. '#' .. string.gsub(user_language, "%s+", "")
+
+local preview = objectMt.alert(msg, strings("language"))
+if preview == 1 then json.langoptions()
+    goto preview
+end
+
+return print(clientinfo.region)
+
