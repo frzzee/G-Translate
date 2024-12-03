@@ -622,6 +622,7 @@ function table_translate(contentTable)
         if contentTable[len][2] ~= nil then
             userText = contentTable[len][1]
         end
+        userText = userText:gsub("^%a", string.upper):gsub("%s+%a", string.upper)
         tableInput = translate(userText, langCode, userLang)
         table.insert(tableOutput, tableInput)
     end
@@ -630,7 +631,7 @@ end
 
 function strings(textToTranslate)
     stringOut = translate(textToTranslate, langCode, userLang)
-    return (stringOut:gsub("^%a", string.upper):gsub("%s+%a", string.upper))
+    return (stringOut:gsub("^%a", string.upper)) --// :gsub("%s+%a", string.upper))
 end
 
 function json.clientapi()
