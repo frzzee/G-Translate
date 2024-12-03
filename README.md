@@ -3,6 +3,6 @@
 ## Language.json
 * The list is updated as new languages are added.
 ## Features
-* Language support [google-translate](https://translate.google.com).
+* Translation by [google-translate](https://translate.google.com).
 * Most language code parameters conform to **ISO-639** identifiers, except where noted.
 * Translations from any language to any language in this list are supported.
