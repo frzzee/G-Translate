@@ -619,7 +619,7 @@ end
 
 function table_translate(contentTable)
     tableOutput = {}
-    for len, variables in ipairs(contentTable) do
+    for len, vars in ipairs(contentTable) do
         userText = contentTable[len]
         if contentTable[len][2] ~= nil then
             userText = contentTable[len][1]
@@ -633,7 +633,7 @@ end
 
 function strings(textToTranslate)
     stringOut = translate(textToTranslate, langCode, userLang)
-    return (stringOut:gsub("^%a", string.upper)) --// :gsub("%s+%a", string.upper))
+    return (stringOut:gsub("^%a", string.upper):gsub("%s+%a", string.upper))
 end
 
 function json.clientapi()
@@ -758,4 +758,5 @@ function openlanglist(tableName)
     end
     return userLang
 end
+
 
