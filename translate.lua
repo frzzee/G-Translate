@@ -743,20 +743,21 @@ end
 json.langcode()
 
 function userinfo(init)
-    local init = 'null'
+    local str = ''
     local info = {
         {"language", user_language},
         {"country", clientinfo.region.country}
     }
     for i, v in ipairs(info) do
+        local str = str .. init
         for k = 1, #info do
             if init == info[k][1] then
-                init = info[k][2]
+                str = str .. info[k][2]
                 break
             end
         end
     end
-    return init
+    return str
 end
 
 function json.langoptions()
