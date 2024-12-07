@@ -746,12 +746,13 @@ function userinfo(init)
     local str = ''
     local info = {
         {"language", user_language},
-        {"country", clientinfo.region.country}
+        {"country", clientinfo.region.country},
+        {"clientinfo", clientinfo.region}
     }
     for k = 1, #info do
         str = "null"
         if info[k][1] == init then
-            str = str .. info[k][2]
+            str = info[k][2]
             break
         end
     end
@@ -785,7 +786,7 @@ function openlanglist(tableName)
     end
     return userLang
 end
-
+--[[
 :: preview ::
 local msg = ''
 msg = msg .. strings("hello world") .. '\n\n'
@@ -797,5 +798,5 @@ if preview == 1 then json.langoptions()
     goto preview
 end
 
-return print(clientinfo.region)
+return print(clientinfo.region)]]
 
