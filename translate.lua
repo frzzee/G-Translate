@@ -757,6 +757,19 @@ function json.langoptions()
     return userLang
 end
 
+function openlanglist(tableName)
+    local options = {}
+    for len, lang in ipairs(language_options) do
+        table_insert(options, language_options[len][2])
+    end
+    local content = gg.choice(options, nil, strings(tableName))
+    if content ~= nil then
+        userLang = language_options[content][1]
+        user_language = options[content]
+    end
+    return userLang
+end
+
 :: preview ::
 local msg = ''
 msg = msg .. strings("hello world") .. '\n\n'
