@@ -748,13 +748,11 @@ function userinfo(init)
         {"language", user_language},
         {"country", clientinfo.region.country}
     }
-    for i, v in ipairs(info) do
-        local str = str .. init
-        for k = 1, #info do
-            if init == info[k][1] then
-                str = str .. info[k][2]
-                break
-            end
+    for k = 1, #info do
+        str = "null"
+        if info[k][1] == init then
+            str = str .. info[k][2]
+            break
         end
     end
     return str
