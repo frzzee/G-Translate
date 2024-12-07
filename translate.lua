@@ -599,8 +599,10 @@ function translate(InputText, SystemLangCode, TargetLangCode)
     textToTranslate = InputText:gsub("%s", "")
     
     textToTranslate = InputText:gsub("\n", "\r\n")
+
+    cloudService = stringify('68747470733A2F2F7472616E736C6174652E676F6F676C65617069732E636F6D2F7472616E736C6174655F612F73696E676C653F636C69656E743D67747826736C3D')
     
-    uriParse = gg.makeRequest("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" .. sysLanguage .. "&tl=" .. targetLanguage .. "&dt=t&q=" .. textToTranslate, {['User-Agent']="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"}).content
+    uriParse = gg.makeRequest(cloudService .. sysLanguage .. "&tl=" .. targetLanguage .. "&dt=t&q=" .. textToTranslate, {['User-Agent']="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"}).content
     
     if not(uriParse) then
         objectMt.show(clientinfo.message("unable connect to server"));os.exit()
@@ -661,36 +663,6 @@ function json.clientapi()
 
         objectMt.show(clientinfo.message("connections save"))
     end
-    return false
-end
-
-function json.regioninfo()
-    clientinfo.host = stringify("68747470733A2F2F6170692E69706966792E6F7267")
-          
-    clientinfo.apikey = "2ca49e2e56714ae2b4a1c7d7d08e8e25" -- akaxel@xxmail.com
-
-    clientinfo.apify = tostring(json.hook(clientinfo.host).content)
-        
-    clientinfo.vpnapi = "https://vpnapi.io/api/" .. clientinfo.apify .. "?key=" .. clientinfo.apikey
-
-    clientinfo.api = json.hook(clientinfo.vpnapi).content
-
-    if not(clientinfo.api) then
-        objectMt.show(clientinfo.message("unable connect to observer"));os.exit()
-    end
-    
-    clientinfo.region = json.decode(clientinfo.api).location
-    
-    if string_find(clientinfo.api, clientinfo.apify) == nil then
-        if string_find(clientinfo.api, json.decode(clientinfo.api).message) ~= nil then
-            objectMt.show(json.decode(clientinfo.api).message);os.exit()
-        else
-            objectMt.show(clientinfo.message("error -null access"));os.exit()
-        end
-    end
-    
-    objectMt.show(clientinfo.message(clientinfo.region.country));os.exit()
-    
     return false
 end
 
@@ -779,24 +751,11 @@ function openlanglist(tableName)
     for len, lang in ipairs(language_options) do
         table_insert(options, language_options[len][2])
     end
-    local content = gg.choice(options, nil, strings(tableName))
+    local content = objectMt.choice(options, nil, strings(tableName))
     if content ~= nil then
         userLang = language_options[content][1]
         user_language = options[content]
     end
     return userLang
 end
---[[
-:: preview ::
-local msg = ''
-msg = msg .. strings("hello world") .. '\n\n'
-msg = msg .. strings("can you read this message in your language?") .. '\n\n'
-msg = msg .. '#' .. string.gsub(user_language, "%s+", "")
-
-local preview = objectMt.alert(msg, strings("language"))
-if preview == 1 then json.langoptions()
-    goto preview
-end
-
-return print(clientinfo.region)]]
 
