@@ -742,6 +742,23 @@ end
 
 json.langcode()
 
+function userinfo(init)
+    local init = 'null'
+    local info = {
+        {"language", user_language},
+        {"country", clientinfo.region.country}
+    }
+    for i, v in ipairs(info) do
+        for k = 1, #info do
+            if init == info[k][1] then
+                init = info[k][2]
+                break
+            end
+        end
+    end
+    return init
+end
+
 function json.langoptions()
     local options = {}
     for len, lang in pairs(language_options) do
