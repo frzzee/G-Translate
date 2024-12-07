@@ -8,11 +8,23 @@
 * Translations from any language to any language in this list are supported.
 ## Usage
 ```lua
-strings(text)
+--// strings(text)
+strings("hello")
 ```
 ```lua
-translate(text, sysCode, targetCode)
+--// translate(text, systemLangCode, targetLangCode)
+translate("hello", "EN", "RU")
 ```
 ```lua
-table_translate(array)
+--// table_translate(array)
+local v = { "a", "b", "c" }
+table_translate(v)
+```
+```lua
+--// openlanglist(tableName)
+openlanglist("language")
+```
+```lua
+--// params = [ country, language, clientinfo ]
+userinfo(params)
 ```
