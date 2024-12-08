@@ -7,24 +7,22 @@
 * Most language code parameters conform to **ISO-639** identifiers, except where noted.
 * Translations from any language to any language in this list are supported.
 ## Usage
+The [translate.lua](https://raw.githubusercontent.com/frzzee/G-Translate/refs/heads/main/translate.lua) file can be dropped into an existing project or direct by url.
+#### strings(text)
 ```lua
---// strings(text)
-strings("hello")
+strings("hello") -- return "Hello"
 ```
+#### translate(text, systemLangCode, targetLangCode)
 ```lua
---// translate(text, systemLangCode, targetLangCode)
-translate("hello", "EN", "RU")
+translate("hello", "EN", "RU") -- return "Привет"
 ```
+#### table_translate(array)
 ```lua
---// table_translate(array)
 local v = { "a", "b", "c" }
-table_translate(v)
+table_translate(v) -- return v
 ```
+#### openlanglist(string)
+Language options menu
 ```lua
---// openlanglist(tableName)
-openlanglist("language")
-```
-```lua
---// params = [ country, language, clientinfo ]
-userinfo(params)
+openlanglist("language") -- return choice
 ```
